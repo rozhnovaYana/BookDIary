@@ -7,6 +7,7 @@ export const Colors: {
   plum_200: "#A587C0",
   plum_300: `#880ED4`,
   plum_500: "#8614CC",
+  plum_600: "#5a0091",
   black_400: '#CCCCCC',
   black_500: "#757575",
   black_600: '#1C1B1E',

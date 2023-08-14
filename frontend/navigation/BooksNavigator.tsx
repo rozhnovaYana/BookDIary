@@ -14,15 +14,19 @@ export default () => {
         contentStyle: {
           backgroundColor: "transparent",
         },
-        headerShown: false,
+        headerTitle: "",
+        headerStyle: {
+          backgroundColor: "transparent",
+        },
+        headerShadowVisible: false,
       }}
     >
-      <Screen name="BooksListNavigator" component={BooksListsNavigator} />
       <Screen
-        name="BookDetailsScreen"
-        component={BookDetailsScreen}
-        options={{ presentation: "modal" }}
+        options={{ headerShown: false }}
+        name="BooksListNavigator"
+        component={BooksListsNavigator}
       />
+      <Screen name="BookDetailsScreen" component={BookDetailsScreen} />
     </Navigator>
   );
 };

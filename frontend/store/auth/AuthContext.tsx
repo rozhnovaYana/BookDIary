@@ -36,7 +36,6 @@ const AuthContextProvider = ({ children }: IAuthContextProvider) => {
       type: ActionTypes.LOGOUT,
       payload: {},
     });
-    console.log(isLogin)
     await AsyncStorage.removeItem("user");
   };
   const value = {

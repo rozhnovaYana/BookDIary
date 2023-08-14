@@ -23,7 +23,7 @@ export type AuthorizedContentTabNavigator = {
 
 export type AuthorizedContentNavigator = {
   AuthorizedContentTabNavigator: NavigatorScreenParams<AuthorizedContentTabNavigator>;
-  AddBook: undefined;
+  AddNewBook: undefined;
 };
 
 export type RootNavigator = {

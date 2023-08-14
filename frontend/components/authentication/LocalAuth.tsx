@@ -1,15 +1,8 @@
-import { useState } from "react";
 import { StyleSheet, Image, Text, Pressable } from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
-import * as LocalAuthentication from "expo-local-authentication";
 
 import { Fonts } from "../../constants/constants";
 
 export default () => {
-  useFocusEffect(() => {
-    (async () => {})();
-  });
-
   const localAuth = async () => {};
   return (
     <Pressable style={styles.faceIDWrapper} onPress={localAuth}>

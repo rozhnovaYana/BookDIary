@@ -1,15 +1,16 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TextInputProps } from "react-native";
 import PressableIcon from "./Icon";
 import Input from "./Input";
 import { Colors, Fonts } from "../../constants/constants";
 
-export default () => {
+export default (props: TextInputProps) => {
   return (
     <View style={styles.wrapper}>
       <Input
         textInputWrapperStyles={styles.inputWrapper}
         style={styles.input}
         placeholder="Search a book..."
+        {...props}
       >
         <PressableIcon
           style={styles.searchIcon}
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontSize: 16,
     fontFamily: Fonts.medium,
-    paddingVertical: 12
+    paddingVertical: 12,
   },
   searchIcon: {
     position: "absolute",
@@ -56,6 +57,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: "center",
     justifyContent: "center",
-    padding: 13
+    padding: 13,
   },
 });

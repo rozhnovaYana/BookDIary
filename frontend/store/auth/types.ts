@@ -2,6 +2,7 @@ export interface IUser {
   name: string;
   books: string[];
   login: string;
+  _id: string;
 }
 export interface IAuthContext {
   isLogin: boolean;

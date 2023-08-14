@@ -1,7 +1,7 @@
 type Props = {
-  value: string, 
-  isValid: boolean
-}
+  value: string;
+  isValid: boolean;
+};
 export type User = {
   name: Props;
   email: Props;

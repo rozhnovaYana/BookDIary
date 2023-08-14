@@ -73,20 +73,18 @@ export default ({
     if (!emailIsValid || !passwordIsValid || !nameIsValid) return;
     try {
       const response = await sendHttp(
-        `http://10.8.0.20:5000/api/users/${mode}`,
+        `http://192.168.1.81:5000/api/users/${mode}/`,
         "POST",
         {
           login: email.value,
           password: password.value,
           name: mode === "signup" && name.value,
-        },
-        {
-          "Content-Type": "application/json",
         }
       );
 
       login && login(response.user);
     } catch (err: any) {
+      console.log(err)
     } finally {
     }
   };

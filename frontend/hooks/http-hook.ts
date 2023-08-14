@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import axios from "axios";
 
-const useHttpRequest = () => {
+export default () => {
   const [error, setError] = useState<string | null>();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -11,13 +11,23 @@ const useHttpRequest = () => {
     async (
       url: string,
       method = "GET",
-      data: {} | null = null,
+      data: {} | undefined = undefined,
       headers = {}
     ) => {
       try {
         setLoading(true);
         const controller = new AbortController();
         controllers.current.push(controller);
+        console.log({
+          method,
+          url,
+          data,
+          headers: {
+            "Content-Type": "application/json",
+            ...headers,
+          },
+          signal: controller.signal,
+        });
         const response = await axios({
           method,
           url,
@@ -28,14 +38,15 @@ const useHttpRequest = () => {
           },
           signal: controller.signal,
         });
-
         controllers.current.filter((i) => i !== controller);
-
+        setLoading(false);
         return response.data;
       } catch (err: any) {
-        setError(err.response.data?.message || "Please, try again later.");
-      } finally {
         setLoading(false);
+        setError(err.response?.data?.message || "Please, try again later.");
+        console.log(err);
+        throw err;
+      } finally {
       }
     },
     []
@@ -49,4 +60,3 @@ const useHttpRequest = () => {
   }, []);
   return { error, loading, sendHttp, onClearError };
 };
-export default useHttpRequest;

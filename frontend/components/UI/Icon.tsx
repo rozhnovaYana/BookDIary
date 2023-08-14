@@ -1,4 +1,11 @@
-import { Pressable, StyleProp, View, ViewStyle } from "react-native";
+import {
+  NativeSyntheticEvent,
+  Pressable,
+  StyleProp,
+  View,
+  ViewStyle,
+  NativeTouchEvent,
+} from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default ({
@@ -6,7 +13,7 @@ export default ({
   style,
   ...iconStyles
 }: {
-  onPress?: () => void;
+  onPress?: (e: NativeSyntheticEvent<NativeTouchEvent>) => void;
   style?: StyleProp<ViewStyle>;
   size: number;
   color?: string;
@@ -20,7 +27,7 @@ export default ({
     );
   }
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} style={style}>
       <Ionicons {...iconStyles} />
     </Pressable>
   );

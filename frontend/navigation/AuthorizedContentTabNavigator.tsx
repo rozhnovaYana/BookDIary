@@ -1,19 +1,31 @@
 import { StyleSheet, View } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  BottomTabScreenProps,
+  createBottomTabNavigator,
+} from "@react-navigation/bottom-tabs";
 
-import { AuthorizedContentTabNavigator } from "./types";
+import {
+  AuthorizedContentNavigator,
+  AuthorizedContentTabNavigator,
+} from "./types";
 
 import PressableIcon from "../components/UI/Icon";
 import { Colors } from "../constants/constants";
 import SettingsScreen from "../screens/SettingsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import BooksNavigator from "./BooksNavigator";
 import BooksScreen from "../screens/BooksScreen";
+import { useNavigation } from "@react-navigation/native";
 
 const { Navigator, Screen } =
   createBottomTabNavigator<AuthorizedContentTabNavigator>();
 
+type AuthorizedContentTabNavigatorProps = BottomTabScreenProps<
+  AuthorizedContentNavigator,
+  "AuthorizedContentTabNavigator"
+>;
 export default () => {
+  const navigation =
+    useNavigation<AuthorizedContentTabNavigatorProps["navigation"]>();
   return (
     <View style={styles.wrapper}>
       <Navigator
@@ -78,6 +90,7 @@ export default () => {
         color={Colors.plum_500}
         size={54}
         style={styles.addButton}
+        onPress={() => navigation.navigate("AddNewBook")}
       />
     </View>
   );
@@ -90,5 +103,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 24,
     right: 24,
+    zIndex: 10,
   },
 });
